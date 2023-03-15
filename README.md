@@ -1,1 +1,1 @@
-# sonarqube-jenkins-terraform-demo
+# Jenkins CICD Pipeline for Terraform Code
