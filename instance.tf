@@ -9,7 +9,7 @@ resource "aws_instance" "web" {
 connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("~/.ssh/ec2demo.pem")
+    private_key = file("ec2demo.pem")
     timeout  = "2m"
   }
 
