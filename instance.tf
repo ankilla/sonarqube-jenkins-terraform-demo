@@ -22,6 +22,8 @@ provisioner "remote-exec" {
         "sudo apt install -y nginx",
         "sudo systemctl enable nginx",
         "sudo systemctl start nginx",
+        "sudo chown -R $USER:$USER /usr/share/nginx/html",
+        "sudo chown -R $USER:$USER /var/www/html",
         "sudo echo '<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>' > /usr/share/nginx/html/index.html",
         "sudo echo '<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>' > /var/www/html/index.html"
     ]
