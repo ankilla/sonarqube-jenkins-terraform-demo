@@ -8,9 +8,9 @@ resource "aws_instance" "web" {
 
 connection {
     type     = "ssh"
-    user     = "ec2-user"
+    user     = "ubuntu"
     private_key = file("ec2demo.pem")
-    timeout  = "2m"
+    timeout  = "5m"
     host = self.public_ip
   }
 
