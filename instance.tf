@@ -6,6 +6,8 @@ resource "aws_instance" "web" {
   key_name                    = "ec2demo"
   vpc_security_group_ids      = [aws_security_group.allow_http_ssh.id]
 
+
+## Method 1 ##
 connection {
     type     = "ssh"
     user     = "ubuntu"
@@ -19,9 +21,32 @@ provisioner "remote-exec" {
         "sudo apt update && apt -y dist-upgrade",
         "sudo apt install -y nginx",
         "sudo systemctl enable nginx",
-        "sudo systemctl start nginx"
+        "sudo systemctl start nginx",
+        "echo '<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>' > /usr/share/nginx/html/index.html",
+        "echo "<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>' > /var/www/html/index.html"
     ]
 }
+
+
+## Method 2 ##
+/*
+user_data = <<-EOF
+              #!/bin/bash
+              curl -L https://example.com/script.sh | bash  #download the script and execute using bash
+              EOF
+
+or
+
+user_data = <<-EOF
+                #!/bin/bash
+                sudo apt update && apt -y dist-upgrade
+                sudo apt install -y nginx
+                sudo systemctl enable nginx
+                sudo systemctl start nginx
+                echo "<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>" > /usr/share/nginx/html/index.html
+                echo "<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>" > /var/www/html/index.html
+              EOF
+*/
 
 
   tags = var.ec2_instance_tags
