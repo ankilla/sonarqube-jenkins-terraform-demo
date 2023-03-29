@@ -26,7 +26,8 @@ provisioner "remote-exec" {
         "echo "<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>' > /var/www/html/index.html"
     ]
 }
-
+  tags = var.ec2_instance_tags
+}
 
 ## Method 2 ##
 /*
@@ -47,7 +48,3 @@ user_data = <<-EOF
                 echo "<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>" > /var/www/html/index.html
               EOF
 */
-
-
-  tags = var.ec2_instance_tags
-}
