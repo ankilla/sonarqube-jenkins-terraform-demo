@@ -29,19 +29,5 @@ variable "image_id" {
   }
 }
 
-variable "allow_http_ssh" {
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-variable "allow_ssh_http" {
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
+variable "allow_http_ssh" {}
+variable "allow_ssh_http" {}
