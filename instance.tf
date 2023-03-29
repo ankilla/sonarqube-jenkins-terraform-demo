@@ -1,15 +1,3 @@
-
-
-/*resource "aws_instance" "example" {
-  ami = "ami-007855ac798b5175e"
-  instance_type = "t2.micro"
-  security_groups = [aws_security_group.example.name]
-  
-  tags = {
-    Name = "example-instance"
-  }
-}*/
-
 resource "aws_instance" "web" {
   ami                         = var.image_id     #"ami-007855ac798b5175e"
   instance_type               = var.inst_type[1] // or var.inst_type[0], var.inst_type[2]
