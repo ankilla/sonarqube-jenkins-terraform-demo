@@ -28,6 +28,3 @@ variable "image_id" {
     error_message = "The image_id value must be a valid AMI id, starting with \"ami-\"."
   }
 }
-
-variable "allow_http_ssh"
-variable "allow_ssh_http"
