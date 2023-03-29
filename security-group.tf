@@ -15,5 +15,11 @@ resource "aws_security_group" "allow_http_ssh" {
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  security_group_id = aws_security_group.allow_http_ssh.id
+
+  ingress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
