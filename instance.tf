@@ -6,6 +6,13 @@ resource "aws_instance" "web" {
   key_name                    = "ec2demo"
   vpc_security_group_ids      = [aws_security_group.allow_http_ssh.id]
 
+connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    private_key = file("~/.ssh/ec2demo.pem")
+    timeout  = "2m"
+  }
+
 provisioner "remote-exec" {
     inline = [
         "sudo apt update && apt -y dist-upgrade",
