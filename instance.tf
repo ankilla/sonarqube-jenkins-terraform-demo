@@ -11,6 +11,7 @@ connection {
     user     = "ec2-user"
     private_key = file("ec2demo.pem")
     timeout  = "2m"
+    host = self.public_ip
   }
 
 provisioner "remote-exec" {
@@ -18,9 +19,7 @@ provisioner "remote-exec" {
         "sudo apt update && apt -y dist-upgrade",
         "sudo apt install -y nginx",
         "sudo systemctl enable nginx",
-        "sudo systemctl start nginx",
-        "echo '<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>' > /usr/share/nginx/html/index.html",
-        "echo '<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>' > /var/www/html/index.html"
+        "sudo systemctl start nginx"
     ]
 }
 
