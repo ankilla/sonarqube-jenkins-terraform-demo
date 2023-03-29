@@ -4,7 +4,7 @@ resource "aws_instance" "web" {
   count                       = var.inst_count
   availability_zone           = "us-east-1c"
   key_name                    = "ec2demo"
-  
+  vpc_security_group_ids      = [aws_security_group.allow_http_ssh.id,aws_security_group.allow_ssh_http.id]
 
   tags = var.ec2_instance_tags
 }
