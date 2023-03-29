@@ -29,5 +29,5 @@ variable "image_id" {
   }
 }
 
-variable "allow_http_ssh" {}
-variable "allow_ssh_http" {}
+variable "allow_http_ssh"
+variable "allow_ssh_http"
