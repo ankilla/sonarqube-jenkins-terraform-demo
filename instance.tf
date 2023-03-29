@@ -6,5 +6,17 @@ resource "aws_instance" "web" {
   key_name                    = "ec2demo"
   vpc_security_group_ids      = [aws_security_group.allow_http_ssh.id]
 
+provisioner "remote-exec" {
+    inline = [
+        "sudo apt update && apt -y dist-upgrade",
+        "sudo apt install -y nginx",
+        "sudo systemctl enable nginx",
+        "sudo systemctl start nginx",
+        "echo "<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>" > /usr/share/nginx/html/index.html",
+        "echo "<h1>Nginx was deployed successful using terraform $(hostname -f)</h1>" > /var/www/html/index.html"
+    ]
+}
+
+
   tags = var.ec2_instance_tags
 }
