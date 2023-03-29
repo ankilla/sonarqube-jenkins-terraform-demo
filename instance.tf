@@ -24,8 +24,8 @@ provisioner "remote-exec" {
         "sudo systemctl start nginx",
         "sudo chown -R $USER:$USER /usr/share/nginx/html",
         "sudo chown -R $USER:$USER /var/www/html",
-        "sudo echo '<h1>Nginx was deployed successful using terraform by Jenkins CI-CD</h1>' > /usr/share/nginx/html/index.html",
-        "sudo echo '<h1>Nginx was deployed successful using terraform by Jenkins CI-CD</h1>' > /var/www/html/index.html"
+        "sudo echo '<h1>Nginx was deployed successful using terraform by Jenkins CI-CD using Method 1</h1>' > /usr/share/nginx/html/index.html",
+        "sudo echo '<h1>Nginx was deployed successful using terraform by Jenkins CI-CD using Method 1</h1>' > /var/www/html/index.html"
     ]
 }
   tags = var.ec2_instance_tags
